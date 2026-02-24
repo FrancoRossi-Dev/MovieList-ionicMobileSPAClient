@@ -1,0 +1,354 @@
+/* ── MovieList Brand Tokens ── */
+:root {
+  --ml-gold: #e8c547;
+  --ml-gold-light: #f2d567;
+  --ml-gold-dim: #8a7520;
+  --ml-gold-glow: rgba(232, 197, 71, 0.15);
+  --ml-gold-ghost: rgba(232, 197, 71, 0.07);
+
+  --ml-crimson: #c0392b;
+  --ml-crimson-light: #e74c3c;
+  --ml-crimson-dim: #7a2018;
+  --ml-crimson-glow: rgba(192, 57, 43, 0.18);
+
+  --ml-teal: #2bbfb0;
+  --ml-teal-dim: rgba(43, 191, 176, 0.15);
+  --ml-violet: #9b59b6;
+  --ml-cream: #f5edd8;
+  --ml-cream-dim: #c4b89a;
+
+  --ml-watched: #2bbfb0;
+  --ml-watchlist: #e8c547;
+  --ml-watching: #9b59b6;
+  --ml-dropped: #c0392b;
+
+  --ml-void: #0a0a0c;
+  --ml-night: #111114;
+  --ml-dark: #18181d;
+  --ml-surface: #22222a;
+  --ml-raised: #2c2c36;
+  --ml-muted-bg: #3a3a46;
+
+  --ml-text-primary: #f2ede8;
+  --ml-text-secondary: #a09a93;
+  --ml-text-muted: #5c5851;
+  --ml-text-disabled: #3a3630;
+
+  --ml-border: rgba(255, 255, 255, 0.07);
+  --ml-border-md: rgba(255, 255, 255, 0.12);
+  --ml-border-lg: rgba(255, 255, 255, 0.18);
+
+  --ml-font-display: 'Playfair Display', Georgia, serif;
+  --ml-font-body: 'DM Sans', sans-serif;
+  --ml-font-mono: 'DM Mono', monospace;
+
+  --ml-space-1: 4px;
+  --ml-space-2: 8px;
+  --ml-space-3: 12px;
+  --ml-space-4: 16px;
+  --ml-space-5: 20px;
+  --ml-space-6: 24px;
+  --ml-space-8: 32px;
+  --ml-space-12: 48px;
+
+  --ml-radius-sm: 4px;
+  --ml-radius-md: 8px;
+  --ml-radius-lg: 12px;
+  --ml-radius-xl: 20px;
+  --ml-radius-pill: 999px;
+
+  --ml-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --ml-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --ml-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --ml-shadow-gold: 0 4px 24px rgba(232, 197, 71, 0.2);
+
+  --ml-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ml-duration: 250ms;
+}
+
+/* ══════════════════════════════════════════════
+   IONIC OVERRIDES
+   ══════════════════════════════════════════════ */
+:root {
+  --ion-color-primary: #e8c547;
+  --ion-color-primary-rgb: 232, 197, 71;
+  --ion-color-primary-contrast: #0a0a0c;
+  --ion-color-primary-contrast-rgb: 10, 10, 12;
+  --ion-color-primary-shade: #8a7520;
+  --ion-color-primary-tint: #f2d567;
+
+  --ion-color-secondary: #2bbfb0;
+  --ion-color-secondary-rgb: 43, 191, 176;
+  --ion-color-secondary-contrast: #0a0a0c;
+  --ion-color-secondary-contrast-rgb: 10, 10, 12;
+  --ion-color-secondary-shade: #1a8f84;
+  --ion-color-secondary-tint: #40ccbe;
+
+  --ion-color-tertiary: #9b59b6;
+  --ion-color-tertiary-rgb: 155, 89, 182;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #5e2a8f;
+  --ion-color-tertiary-tint: #b07cc6;
+
+  --ion-color-success: #2bbfb0;
+  --ion-color-success-rgb: 43, 191, 176;
+  --ion-color-success-contrast: #0a0a0c;
+  --ion-color-success-contrast-rgb: 10, 10, 12;
+  --ion-color-success-shade: #1a8f84;
+  --ion-color-success-tint: #40ccbe;
+
+  --ion-color-warning: #e8c547;
+  --ion-color-warning-rgb: 232, 197, 71;
+  --ion-color-warning-contrast: #0a0a0c;
+  --ion-color-warning-contrast-rgb: 10, 10, 12;
+  --ion-color-warning-shade: #8a7520;
+  --ion-color-warning-tint: #f2d567;
+
+  --ion-color-danger: #c0392b;
+  --ion-color-danger-rgb: 192, 57, 43;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #7a2018;
+  --ion-color-danger-tint: #e74c3c;
+
+  --ion-color-dark: #f2ede8;
+  --ion-color-dark-rgb: 242, 237, 232;
+  --ion-color-dark-contrast: #0a0a0c;
+  --ion-color-dark-shade: #a09a93;
+  --ion-color-dark-tint: #ffffff;
+
+  --ion-color-medium: #5c5851;
+  --ion-color-medium-rgb: 92, 88, 81;
+  --ion-color-medium-contrast: #f2ede8;
+  --ion-color-medium-shade: #3a3630;
+  --ion-color-medium-tint: #a09a93;
+
+  --ion-color-light: #22222a;
+  --ion-color-light-rgb: 34, 34, 42;
+  --ion-color-light-contrast: #f2ede8;
+  --ion-color-light-shade: #111114;
+  --ion-color-light-tint: #2c2c36;
+
+  --ion-background-color: #0a0a0c;
+  --ion-background-color-rgb: 10, 10, 12;
+  --ion-text-color: #f2ede8;
+  --ion-text-color-rgb: 242, 237, 232;
+  --ion-border-color: rgba(255, 255, 255, 0.07);
+  --ion-font-family: 'DM Sans', sans-serif;
+
+  --ion-item-background: #18181d;
+  --ion-item-border-color: rgba(255, 255, 255, 0.07);
+  --ion-card-background: #18181d;
+
+  --ion-toolbar-background: #111114;
+  --ion-toolbar-border-color: rgba(255, 255, 255, 0.07);
+  --ion-toolbar-color: #f2ede8;
+
+  --ion-tab-bar-background: #111114;
+  --ion-tab-bar-border-color: rgba(255, 255, 255, 0.07);
+  --ion-tab-bar-color: #5c5851;
+  --ion-tab-bar-color-selected: #e8c547;
+
+  --ion-color-step-50: #111114;
+  --ion-color-step-100: #18181d;
+  --ion-color-step-150: #1c1c22;
+  --ion-color-step-200: #22222a;
+  --ion-color-step-250: #272730;
+  --ion-color-step-300: #2c2c36;
+  --ion-color-step-350: #32323d;
+  --ion-color-step-400: #3a3a46;
+  --ion-color-step-450: #424250;
+  --ion-color-step-500: #4a4a58;
+  --ion-color-step-550: #545460;
+  --ion-color-step-600: #5c5851;
+  --ion-color-step-650: #706a62;
+  --ion-color-step-700: #7e7870;
+  --ion-color-step-750: #8c8680;
+  --ion-color-step-800: #a09a93;
+  --ion-color-step-850: #b4aea8;
+  --ion-color-step-900: #c8c3bd;
+  --ion-color-step-950: #ddd9d3;
+
+  color-scheme: dark;
+}
+/* :root {
+  --color-primary: rgb(32, 255, 32);
+} */
+#map {
+  height: 60dvh;
+  border-radius: 0.5rem;
+}
+
+.ion-list {
+  background-color: red;
+}
+
+.btn-primary {
+  margin-inline: auto;
+}
+
+.example-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.user-info {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--ion-color-light-shade);
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.user-email {
+  font-size: 14px;
+  color: var(--ion-color-medium);
+}
+
+.hidden {
+  display: none !important;
+}
+
+ion-tab-button[tab='addMovie']:not(.tab-selected) {
+  color: var(--color-primary) !important;
+  opacity: 1 !important;
+}
+
+ion-tab-button[tab='addMovie'] ion-icon {
+  color: var(--color-primary) !important;
+}
+
+/* Hover state */
+ion-tab-button[tab='addMovie']:hover {
+  color: var(--color-primary) !important;
+  opacity: 0.8 !important;
+}
+
+.page-content {
+  min-height: 92dvh;
+  overflow-x: hidden;
+}
+
+.movieRow,
+.contentDiv,
+.form {
+  margin: 1rem 1rem 0;
+  padding: 1rem 0.5rem 1rem !important;
+  border-radius: 8px;
+  background-color: #1d1d1d;
+  border-bottom: 1px solid rgba(248, 248, 248, 0.164);
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}
+
+.form {
+  text-align: center;
+}
+
+.tableMovieName {
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 0 0 0.5rem 0.25rem;
+}
+
+.tableMovieDescription {
+  color: #b6b6b6;
+}
+
+.deleteMovieBtn {
+  padding-left: 20px;
+  color: var(--ion-color-danger);
+}
+#map {
+  width: 100%;
+  height: 80dvh;
+}
+
+/* FORMS LOGIN - SIGNUP */
+
+.form-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  .label-text-wrapper {
+    width: 10rem;
+  }
+}
+
+.form {
+  padding: 3rem 2rem !important;
+  .btn-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    ion-button {
+      width: 100%;
+      font-weight: 550;
+    }
+  }
+}
+
+/* loading screen */
+
+.spinner-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  overflow: hidden;
+
+  img {
+    width: 25dvh;
+    display: block;
+  }
+
+  ion-spinner {
+    width: 50px;
+    height: 50px;
+    color: var(--ion-color-primary);
+    margin: 0 50%;
+    transform: translate(-50%);
+  }
+}
+
+/* header */
+
+.ui-header {
+  padding: 0 1rem;
+  img {
+    height: 4dvh;
+  }
+}
+
+.fab-container {
+  bottom: 75px;
+  right: 20px;
+}
+
+.movieTable > p,
+#emptyMessage {
+  margin: 3rem auto;
+  font-size: 2rem;
+  width: 15ch;
+  text-align: center;
+}
+
+#addMovieForm {
+  margin-top: 50%;
+  transform: translateY(-25%);
+}

@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieList</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="png" />
+    <!-- ionic -->
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/palettes/dark.always.css" />
+
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin="" />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""></script>
+
+    <!-- js charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- app -->
+    <link rel="stylesheet" href="./src/styles/index.css" />
+    <script src="./src/app.js" type="module" defer></script>
+  </head>
+
+  <body>
+    <div class="spinner-container">
+      <div>
+        <img src="./assets/logoSquare_noBg.svg" alt="" srcset="" />
+        <!-- <h2>MovieList</h2> -->
+        <ion-spinner name="dots"></ion-spinner>
+      </div>
+    </div>
+
+    <ion-app class="app hidden">
+      <!-- Side Menu (Drawer) -->
+      <ion-menu side="end" content-id="mainTabs" menu-id="user-menu">
+        <!-- Menu content -->
+        <ion-content>
+          <!-- User Info Section -->
+          <div class="user-info">
+            <ion-avatar class="user-avatar">
+              <img src="/assets/placeholders/placeholder-pfp.png" alt="User Avatar" />
+            </ion-avatar>
+            <div class="user-name">John Doe</div>
+            <div class="user-usuario">john.doe@example.com</div>
+          </div>
+
+          <!-- menu -->
+          <ion-list>
+            <ion-item button data-route="/profile">
+              <ion-icon name="person-outline" slot="start"></ion-icon>
+              <ion-label>Profile</ion-label>
+            </ion-item>
+
+            <ion-item button lines="none" id="logout-btn">
+              <ion-icon name="log-out-outline" slot="start" color="danger"></ion-icon>
+              <ion-label color="danger">Logout</ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+
+      <!-- FAB -->
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="fab-container">
+        <ion-fab-button id="fab-agregar">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <!-- tabs -->
+      <ion-tabs id="mainTabs" content-id="mainTabs">
+        <!-- Pages -->
+
+        <!-- Login -->
+        <ion-tab tab="login">
+          <ion-page class="form-page">
+            <div class="form" id="loginForm">
+              <img src="./assets/logo.svg" alt="Logo" class="form-logo" />
+              <h2>Ingresar</h2>
+              <ion-list>
+                <ion-item>
+                  <ion-input
+                    id="login-usuario"
+                    label="Usuario"
+                    placeholder="nicolaTesla"
+                    type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input
+                    id="login-password"
+                    label="Contraseña"
+                    type="password"
+                    placeholder="**********"></ion-input>
+                </ion-item>
+              </ion-list>
+              <div class="btn-wrapper">
+                <ion-button class="btn-primary" id="loginBtn">Login</ion-button>
+                <p>¿Aún no tienes una cuenta?</p>
+                <ion-button class="btn-secconday navigator" data-destiny="signup" fill="outline">
+                  Registrarme
+                </ion-button>
+              </div>
+            </div>
+          </ion-page>
+        </ion-tab>
+
+        <ion-tab tab="signup">
+          <ion-page class="form-page">
+            <div class="form" id="signupForm">
+              <img src="./assets/logo.svg" alt="Logo" class="form-logo" />
+              <h2>Registrarse</h2>
+              <ion-list>
+                <ion-item>
+                  <ion-input
+                    id="signup-usuario"
+                    label="Usuario"
+                    placeholder="nicolaTesla"
+                    type="text">
+                  </ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-input
+                    id="signup-password"
+                    label="Contraseña"
+                    type="password"
+                    placeholder="**********">
+                  </ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-select label="Pais" placeholder="Dinos tu pais" id="signup-pais">
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+
+              <div class="btn-wrapper">
+                <ion-button class="btn-primary" id="signupBtn"> Registrarse </ion-button>
+                <p>¿Ya tienes una cuenta?</p>
+                <ion-button class="btn-secconday navigator" data-destiny="login" fill="outline">
+                  Ingresar
+                </ion-button>
+              </div>
+            </div>
+          </ion-page>
+        </ion-tab>
+
+        <!-- Home page / Peliculas -->
+        <ion-tab tab="home">
+          <ion-page id="home">
+            <ion-header>
+              <ion-toolbar class="ui-header">
+                <ion-buttons slot="start">
+                  <img src="./assets/logo_header.svg" alt="" srcset="" />
+                </ion-buttons>
+                <ion-buttons slot="end">
+                  <ion-menu-button menu="user-menu"></ion-menu-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <!-- content -->
+            <ion-content class="page-content">
+              <ion-segment value="semana" id="movieDateFilter">
+                <ion-segment-button value="semana">
+                  <ion-label>Semana</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="mes">
+                  <ion-label>Mes</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="todo">
+                  <ion-label>Todas</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <p id="emptyMessage" style="display: none">
+                No hay reseñas en este periodo de tiempo
+              </p>
+              <ion-grid class="movieTable"> </ion-grid>
+            </ion-content>
+          </ion-page>
+        </ion-tab>
+
+        <ion-tab tab="addMovie">
+          <ion-page id="addMovie">
+            <ion-header>
+              <ion-toolbar class="ui-header">
+                <ion-buttons slot="start">
+                  <img src="./assets/logo_header.svg" alt="" srcset="" />
+                </ion-buttons>
+                <ion-buttons slot="end">
+                  <ion-menu-button menu="user-menu"></ion-menu-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <!-- content -->
+            <ion-content class="page-content">
+              <div class="form" id="addMovieForm">
+                <h1>Agregar una reseña</h1>
+                <ion-list>
+                  <ion-item>
+                    <ion-select
+                      label="Categoria"
+                      placeholder="Elije una categoria"
+                      id="addMovie-categoria">
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-input
+                      id="addMovie-nombre"
+                      label="Nombre"
+                      placeholder="Todo en todas partes al mismo tiempo"
+                      type="text">
+                    </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input id="addMovie-fecha" label="En que fecha?" type="date"> </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-textarea
+                      id="addMovie-review"
+                      label="Reseña"
+                      label-placement="stacked"
+                      autoGrow="true"
+                      rows="6"
+                      maxlength="250"
+                      counter="true"
+                      placeholder="Una explosión creativa y emotiva que mezcla caos, humor y corazón en una historia tan absurda como profunda.">
+                    </ion-textarea>
+                  </ion-item>
+
+                  <ion-button class="btn-primary" id="addMovie-submit"> Registrar </ion-button>
+                </ion-list>
+              </div>
+            </ion-content>
+          </ion-page>
+        </ion-tab>
+
+        <ion-tab tab="mapa">
+          <ion-page id="mapPage">
+            <ion-header>
+              <ion-toolbar class="ui-header">
+                <ion-buttons slot="start">
+                  <img src="./assets/logo_header.svg" alt="" srcset="" />
+                </ion-buttons>
+                <ion-buttons slot="end">
+                  <ion-menu-button menu="user-menu"></ion-menu-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <div class="contentDiv">
+              <div id="map"></div>
+            </div>
+          </ion-page>
+        </ion-tab>
+
+        <ion-tab tab="estadisticas">
+          <ion-page>
+            <ion-header>
+              <ion-toolbar class="ui-header">
+                <ion-buttons slot="start">
+                  <img src="./assets/logo_header.svg" alt="" srcset="" />
+                </ion-buttons>
+                <ion-buttons slot="end">
+                  <ion-menu-button menu="user-menu"></ion-menu-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <!-- content -->
+            <ion-content class="page-content">
+              <div class="contentDiv">
+                <p>estadisticas</p>
+                <div>
+                  <canvas id="categoriasChart"></canvas>
+                </div>
+                <ul class="categoriaStatsContainer" style="display: none"></ul>
+                <div>
+                  <canvas id="edadChart"></canvas>
+                </div>
+                <ul class="edadPorcentajeContainer" style="display: none"></ul>
+              </div>
+            </ion-content>
+          </ion-page>
+        </ion-tab>
+
+        <!-- Bottom Tab Bar  -->
+        <ion-tab-bar slot="bottom" id="tabsMenu"> </ion-tab-bar>
+      </ion-tabs>
+    </ion-app>
+  </body>
+</html>

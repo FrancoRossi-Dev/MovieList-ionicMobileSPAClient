@@ -1,0 +1,41 @@
+export const API_URL = 'https://movielist.develotion.com';
+
+export const routes = [
+  { route: 'home', label: 'Peliculas', icon: 'home' },
+  { route: 'estadisticas', label: 'Estadisticas', icon: 'stats-chart' },
+  { route: 'mapa', label: 'Mapa', icon: 'map' },
+  // { route: 'addMovie', label: 'Agregar', icon: 'add-circle' },
+];
+
+export const countryCoords = {
+  Uruguay: [-32.5228, -55.7658],
+  Argentina: [-38.4161, -63.6167],
+  Brazil: [-14.235, -51.9253],
+  Bolivia: [-16.2902, -63.5887],
+  Chile: [-35.6751, -71.543],
+  Colombia: [4.5709, -74.2973],
+  Peru: [-9.19, -75.0152],
+  Paraguay: [-23.4425, -58.4438],
+  Ecuador: [-1.8312, -78.1834],
+  Afghanistan: [33.9391, 67.71],
+  Venezuela: [6.4238, -66.5897],
+  Armenia: [40.0691, 45.0382],
+  Algeria: [28.0339, 1.6596],
+  Belarus: [53.7098, 27.9534],
+  Belize: [17.1899, -88.4976],
+  'British Indian Ocean Territory': [-6.3432, 71.8765],
+  'United Kingdom': [55.3781, -3.436],
+  'United States Minor Outlying Islands': [19.2823, 166.647],
+  'Vatican City State (Holy See)': [41.9029, 12.4534],
+  'Aland Islands': [60.1785, 19.9156],
+  Albania: [41.1533, 20.1683],
+  'American Samoa': [-14.271, -170.1322],
+  'Antigua And Barbuda': [17.0608, -61.7964],
+  Azerbaijan: [40.1431, 47.5769],
+  Bahrain: [26.0667, 50.5577],
+  China: [35.8617, 104.1954],
+  Liberia: [6.4281, -9.4295],
+  Ukraine: [48.3794, 31.1656],
+  Uzbekistan: [41.3775, 64.5853],
+  Vanuatu: [-15.3767, 166.9592],
+};
