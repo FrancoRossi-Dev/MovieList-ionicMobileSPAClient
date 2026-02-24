@@ -1,5 +1,5 @@
 import { addMovie, deleteMovie, sentimentAnalysis } from '../services/movieService.js';
-import { toast } from '../ui/ui.js';
+import { clearInputs, toast } from '../ui/ui.js';
 import { checkIfThereAreMovies, filterMovies } from '../ui/uiMovies.js';
 import { navigateBack } from './router.js';
 
@@ -28,6 +28,7 @@ export async function handleSubmitMovie() {
 
     const res = await addMovie(movie);
     if (res.codigo == 200) {
+      clearInputs('#addMovieForm');
       toast(res.mensaje, 'success');
       await navigateBack();
     }

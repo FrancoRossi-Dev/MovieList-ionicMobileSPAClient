@@ -1,5 +1,5 @@
 import { Login, Logout, SignUp } from '../services/userService.js';
-import { toast } from '../ui/ui.js';
+import { clearInputs, toast } from '../ui/ui.js';
 import { navigateTo } from './router.js';
 
 export async function handleLogin(e) {
@@ -15,6 +15,8 @@ export async function handleLogin(e) {
       password,
     };
     await Login(credentials);
+    clearInputs('#loginForm');
+    document.querySelector('.user-name').textContent = usuario;
     navigateTo('home');
   } catch (error) {
     await toast(error.message, 'warning');
@@ -36,9 +38,8 @@ export async function handleSignup(e) {
 
     await SignUp(data);
 
+    clearInputs('#signupForm');
     await Login({ usuario, password });
-
-    navigateTo('home');
   } catch (error) {
     console.log('fail');
     console.log(error.message);

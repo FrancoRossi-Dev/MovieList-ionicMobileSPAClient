@@ -83,3 +83,15 @@ export function appLoaded(loaded) {
     document.querySelector('.spinner-container').classList.remove('hidden');
   }
 }
+
+export function clearInputs(parent) {
+  const inputArr = document.querySelectorAll(
+    `${parent} ion-input,
+    ${parent} ion-select,
+    ${parent} ion-textarea`,
+  );
+  inputArr.forEach((el) => {
+    console.log(el);
+    el.value = '';
+  });
+}

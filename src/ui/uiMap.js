@@ -3,10 +3,6 @@ import { countryCoords } from '../shared/constants.js';
 
 let map;
 
-export function getMap() {
-  return map;
-}
-
 export async function renderMap() {
   const data = await getUsersByCountry();
   const paises = data.paises;
@@ -17,7 +13,7 @@ export async function renderMap() {
   }, 200);
 }
 
-export async function drawMap(paises) {
+async function drawMap(paises) {
   if (map) {
     map.remove();
   }
@@ -42,7 +38,7 @@ export async function drawMap(paises) {
   }
 }
 
-export async function addMarker(pais, rank = 0) {
+async function addMarker(pais, rank = 0) {
   const coords = countryCoords[pais.nombre];
   if (!coords) return;
 

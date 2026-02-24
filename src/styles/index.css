@@ -352,6 +352,11 @@ ion-tab-button[tab='addMovie']:hover {
   text-align: center;
 }
 
+.movieTable {
+  overflow: scroll;
+  max-height: 80dvh;
+}
+
 #addMovieForm {
   margin-top: 50%;
   transform: translateY(-25%);
@@ -438,4 +443,9 @@ ion-tab-button[tab='addMovie']:hover {
 
 .leaflet-control-attribution a {
   color: #5c5851 !important;
+}
+
+.edadGraph {
+  max-width: 60%;
+  margin: 0 auto;
 }
