@@ -13,14 +13,13 @@ async function init() {
   try {
     if (!checkToken()) throw new Error('usuario desconocido');
     // await navigateTo('home');
-    await navigateTo('estadisticas');
-    // await navigateTo('mapa');
+    // await navigateTo('estadisticas');
+    await navigateTo('mapa');
   } catch (error) {
     if (error.message === 'No esta autorizado') {
       toast('Su sesion ha caducado, porfavor ingrese nuevamente', 'danger');
       clearToken();
     }
-    console.log(error);
     await navigateTo('login');
   }
 

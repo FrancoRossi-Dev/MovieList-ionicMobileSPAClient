@@ -4,13 +4,12 @@ let categoriasChart = null;
 let edadChart = null;
 
 export async function renderEstadisticas() {
-  const categoriaStatsContainer = document.querySelector('.categoriaStatsContainer');
-  const edadPorcentajeContainer = document.querySelector('.edadPorcentajeContainer');
+  const estadisticaMsg = document.querySelector('.estadisticasMsg');
   const data = await getMovies();
   const movies = data.peliculas;
 
   if (movies.length === 0) {
-    edadPorcentajeContainer.textContent = 'no hay pelis';
+    estadisticaMsg.textContent = 'no hay pelis';
     return;
   }
 
@@ -38,23 +37,6 @@ export async function renderEstadisticas() {
   }
 
   EdadPieChart(ageStats);
-
-  let categoriaStatsHtml = '';
-  movieStats.forEach((m) => {
-    categoriaStatsHtml += `<p>${m.categoria} : ${m.qty}</p>`;
-  });
-  categoriaStatsContainer.innerHTML = categoriaStatsHtml;
-
-  const total = Number(ageStats.mayores) + Number(ageStats.todoPublico);
-  const porcentage = {
-    mayores: Math.round((Number(ageStats.mayores) / total) * 100),
-    todoPublico: Math.round((Number(ageStats.todoPublico) / total) * 100),
-  };
-  const edadPorcentajeHtml = `
-     <li>Apto para todo publico: ${porcentage.todoPublico}%</li>
-     <li>Apto solo para mayores: ${porcentage.mayores}%</li>
-     `;
-  edadPorcentajeContainer.innerHTML = edadPorcentajeHtml;
 }
 
 export function CatogriasRadarChart(stats) {

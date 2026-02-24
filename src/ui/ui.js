@@ -5,6 +5,7 @@ import { routes } from '../shared/constants.js';
 
 const tabsMenu = document.querySelector('#tabsMenu');
 const menu = document.querySelector('ion-menu');
+const fabBtn = document.querySelector('.fab-container');
 
 export function initUi() {
   populateTabBar();
@@ -26,11 +27,14 @@ export function populateTabBar() {
 }
 
 export function displayTabBar(state) {
+  console.log(state);
   if (state) {
     tabsMenu.style.display = 'flex';
+    fabBtn.style.display = 'block';
     menu.disabled = false;
   } else {
     tabsMenu.style.display = 'none';
+    fabBtn.style.display = 'none';
     menu.disabled = true;
   }
 }
