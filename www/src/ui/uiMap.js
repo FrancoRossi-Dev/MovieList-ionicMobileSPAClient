@@ -1,5 +1,4 @@
-import { getLocation, getUsersByCountry } from '../services/geolocationService.js';
-import { countryCoords } from '../shared/constants.js';
+import { getCountries, getLocation, getUsersByCountry } from '../services/geolocationService.js';
 
 let map;
 
@@ -14,9 +13,9 @@ export async function renderMap() {
 }
 
 async function drawMap(paises) {
-  if (map) {
-    map.remove();
-  }
+  if (map) map.remove();
+
+  const paisesEnApi = await getCountries();
   const location = await getLocation();
 
   map = L.map('map').setView([location.lat, location.lng], 2);
@@ -33,14 +32,21 @@ async function drawMap(paises) {
     subdomains: 'abcd',
   }).addTo(map);
 
-  for (let i = 0; i < 10; i++) {
-    addMarker(paises[i], i);
+  // to 10
+  let i = 0;
+  let k = 0;
+  while (k < 10) {
+    const mark = addMarker(paises[i], i, paisesEnApi.paises);
+    k += mark;
+    i++;
   }
 }
 
-async function addMarker(pais, rank = 0) {
-  const coords = countryCoords[pais.nombre];
-  if (!coords) return;
+function addMarker(pais, rank = 0, APIpaises) {
+  // console.log(pais);
+  const paisEnApi = APIpaises.find((APIpais) => APIpais.nombre == pais.nombre);
+  if (!paisEnApi) return 0;
+  const coords = [paisEnApi.latitud, paisEnApi.longitud];
 
   const isTop = rank === 0;
   const size = isTop ? [38, 95] : [24, 60];
@@ -71,4 +77,6 @@ async function addMarker(pais, rank = 0) {
       ),
     )
     .addTo(map);
+
+  return 1;
 }

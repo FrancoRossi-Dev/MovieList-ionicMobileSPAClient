@@ -27,7 +27,6 @@ export function populateTabBar() {
 }
 
 export function displayTabBar(state) {
-  console.log(state);
   if (state) {
     tabsMenu.style.display = 'flex';
     fabBtn.style.display = 'block';
@@ -91,7 +90,36 @@ export function clearInputs(parent) {
     ${parent} ion-textarea`,
   );
   inputArr.forEach((el) => {
-    console.log(el);
     el.value = '';
   });
+}
+
+export async function confirmSheet(cb) {
+  const sheet = document.querySelector('#confirmSheet');
+  sheet.header = '¿Esta seguro que desea borrar esta reseña?';
+  sheet.buttons = [
+    {
+      text: 'Borrar reseña',
+      role: 'destructive',
+      cssClass: 'ion-color-danger',
+      data: {
+        action: 'delete',
+      },
+    },
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      data: {
+        action: 'cancel',
+      },
+    },
+  ];
+
+  await sheet.present();
+
+  const result = await sheet.onDidDismiss();
+
+  if (result.data?.action === 'delete') {
+    cb();
+  }
 }

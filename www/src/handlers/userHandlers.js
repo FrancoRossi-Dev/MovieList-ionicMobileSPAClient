@@ -32,17 +32,12 @@ export async function handleSignup(e) {
     const idPais = document.querySelector('#signup-pais').value;
 
     if (!usuario || !password || !idPais) throw new Error('Campos vacios');
-
     const data = { usuario, password, idPais };
-    console.log(data);
-
     await SignUp(data);
-
     clearInputs('#signupForm');
     await Login({ usuario, password });
   } catch (error) {
-    console.log('fail');
-    console.log(error.message);
+    toast(error.message, 'warning');
   }
 }
 

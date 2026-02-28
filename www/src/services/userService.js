@@ -6,7 +6,6 @@ export async function SignUp(userData) {
 }
 
 export async function Login(userData) {
-  console.log(userData);
   const data = await fetchMovieApi('/login', 'POST', { body: userData });
   saveToken(data.token);
   return data;

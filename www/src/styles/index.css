@@ -176,8 +176,10 @@
   --color-primary: rgb(32, 255, 32);
 } */
 #map {
-  height: 60dvh;
-  border-radius: 0.5rem;
+  height: calc(80dvh - var(--ion-safe-area-bottom) - var(--ion-tab-bar-height, 56px));
+  /* 
+  height: 80%; */
+  max-height: 80dvh;
 }
 
 .ion-list {
@@ -186,13 +188,6 @@
 
 .btn-primary {
   margin-inline: auto;
-}
-
-.example-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 }
 
 .user-info {
@@ -239,8 +234,10 @@ ion-tab-button[tab='addMovie']:hover {
 }
 
 .page-content {
-  min-height: 92dvh;
-  overflow-x: hidden;
+  /* min-height: 92dvh;
+  overflow-x: hidden; */
+  min-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .movieRow,
@@ -253,6 +250,20 @@ ion-tab-button[tab='addMovie']:hover {
   border-bottom: 1px solid rgba(248, 248, 248, 0.164);
   padding: 0.5rem 0;
   margin-bottom: 1rem;
+}
+
+.contentDiv,
+.movieTable {
+  height: calc(98vh - (56px * 2) - 1rem);
+  overflow-y: scroll;
+}
+
+.movieTable {
+  padding-bottom: 5rem;
+}
+
+.contentDiv:has(#map) {
+  overflow-y: hidden;
 }
 
 .graphContainer {
@@ -295,7 +306,7 @@ ion-tab-button[tab='addMovie']:hover {
 }
 
 .form {
-  padding: 3rem 2rem !important;
+  padding: 1rem 0.5rem !important;
   .btn-wrapper {
     display: flex;
     flex-direction: column;
@@ -358,7 +369,7 @@ ion-tab-button[tab='addMovie']:hover {
 }
 
 #addMovieForm {
-  margin-top: 50%;
+  margin-top: 40%;
   transform: translateY(-25%);
 }
 
@@ -448,4 +459,26 @@ ion-tab-button[tab='addMovie']:hover {
 .edadGraph {
   max-width: 60%;
   margin: 0 auto;
+}
+
+:root {
+  --ion-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --fab-bottom-offset: calc(16px + var(--ion-safe-area-bottom));
+}
+
+ion-fab {
+  --bottom: var(--fab-bottom-offset) !important;
+}
+
+/* try */
+ion-content {
+  --padding-bottom: env(safe-area-inset-bottom, 0px);
+  display: flex;
+  flex-direction: column;
+}
+
+ion-list,
+.movieTable {
+  flex: 1;
+  overflow: auto;
 }

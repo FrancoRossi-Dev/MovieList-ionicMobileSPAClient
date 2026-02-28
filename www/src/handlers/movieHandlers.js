@@ -1,5 +1,5 @@
 import { addMovie, deleteMovie, sentimentAnalysis } from '../services/movieService.js';
-import { clearInputs, toast } from '../ui/ui.js';
+import { clearInputs, confirmSheet, toast } from '../ui/ui.js';
 import { checkIfThereAreMovies, filterMovies } from '../ui/uiMovies.js';
 import { navigateBack } from './router.js';
 
@@ -48,18 +48,16 @@ export async function handleDeleteMovie(btn) {
     return;
   }
 
-  const confirmed = window.confirm('¿Seguro que quieres eliminar esta película?');
-  if (!confirmed) return;
-
-  try {
-    await deleteMovie(id);
-    row.remove();
-    toast('Película borrada', 'success');
-  } catch (error) {
-    console.error(error);
-    toast('Error al borrar la película, intente mas tarde', 'danger');
-  }
-  checkIfThereAreMovies();
+  confirmSheet(async () => {
+    try {
+      await deleteMovie(id);
+      row.remove();
+      toast('Película borrada', 'success');
+    } catch (error) {
+      toast('Error al borrar la película, intente mas tarde', 'danger');
+    }
+    checkIfThereAreMovies();
+  });
 }
 
 export function addDeleteHandlers() {
